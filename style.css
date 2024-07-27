@@ -6,7 +6,7 @@
 * {
 	box-sizing: border-box;  
 	overflow: hidden;
-	}
+}
   
 body {
 	height: 100vh;
@@ -19,7 +19,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: right top;
  	background-attachment: fixed;
-	}
+}
 
 header{
 	height: 20vh;
@@ -41,16 +41,15 @@ main{
 }
 
 #basic {	
-	background: -webkit-linear-gradient(white, #38495a);
+	background: -webkit-linear-gradient(white, #497bad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 	padding: 4px;
 	font-size: max(8vw, 70px);
-
 	animation: basicIn calc(var(--anitime)*5);	
 }
 
-#first, #second, #third{
+#first, #second, #third {
 	text-align: center;
 	background: -webkit-linear-gradient(white 40%, #497bad);
     -webkit-background-clip: text;
@@ -61,17 +60,25 @@ main{
 }
 
 #first{
-	animation: waiting var(--anidelay) linear, fast var(--anitime) linear var(--anidelay);
+	animation:	waiting var(--anidelay) linear, 
+				fast var(--anitime) linear var(--anidelay), 
+				scaler calc(var(--anitime)*3)ease-in-out calc(var(--anidelay)*2) infinite;
 
 	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 }
 
 #second{
-	animation: waiting calc(var(--anidelay)*1.2) linear, accurate var(--anitime) linear calc(var(--anidelay)*1.2);
+	animation: 	waiting calc(var(--anidelay)*1.2) linear, 
+				accurate var(--anitime) linear calc(var(--anidelay)*1.2),
+				scaler calc(var(--anitime)*3)ease-in-out calc(var(--anidelay)*2 + 1.5s) infinite;
+
 }
 
 #third{
-	animation: waiting calc(var(--anidelay)*1.5) linear, cheap var(--anitime) steps(7) calc(var(--anidelay)*1.5);
+	animation: 	waiting calc(var(--anidelay)*1.5) linear, 
+				cheap var(--anitime) steps(7) calc(var(--anidelay)*1.5),
+				scaler calc(var(--anitime)*3)ease-in-out calc(var(--anidelay)*2 + 3s) infinite;
+
 	overflow: hidden;
 	white-space: nowrap;
 	width: calc(50px * 5);
@@ -81,25 +88,27 @@ footer {
 	height: 10vh;
 	display: grid;
 	position: relative;
-	mask-image: linear-gradient(90deg, transparent 10vw, black, transparent 95%);
-	-webkit-mask-image: linear-gradient(90deg, transparent, 5vw, rgb(0, 0, 0), 95vw, transparent);
-	align-items: center;
-}
-
-#print1 {
+	mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+	-webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent, 100%);
+	}
+.print1 {
 	animation: ticker 15s linear infinite;
 	animation-delay: calc(var(--anitime)*6);
-	font-size: max(2vw, 50px);
+	font-size: max(2vw, 40px);
 	/* border-top: yellow 4px solid; */
 	/* border-bottom: yellow 4px solid; */
 	color: #FFF;
 	text-align: left;
 	white-space: nowrap;
-	width: min-content;
+	width:max-content;
 	position: absolute;
 	right: 0;
 	padding: 2vw 0;
-	/* transform: translateX(100%); */
+	transform: translateX(100%);
+}
+
+.print2 {
+	animation-delay: calc(var(--anitime)*6 + 7.5s);
 }
 
 
@@ -127,13 +136,13 @@ footer {
 		letter-spacing: .1em;
 		font-size: max(8vw, 70px);
 		}	
-	}
+}
 
 @keyframes waiting {
 	0%, 100%	{
 		opacity: 0;
 		}
-	}	
+}	
 
 @keyframes fast	{
 	0%	{
@@ -145,7 +154,7 @@ footer {
 		transform: translateX(0);
 		text-shadow: 0px 0px 20px rgba(255, 255, 255, 0);
 		}	
-	}
+}
 
 @keyframes accurate {
 	0% 	{
@@ -156,7 +165,7 @@ footer {
 	100%{
 		transform: scale(1);
 		}	
-	}	
+}	
 
 @keyframes cheap {
 	0%	{
@@ -176,8 +185,30 @@ footer {
 		}
 
 	100%{
-		transform: translateX(-110%);
+		transform: translateX(-125%);
 		}	
+}
+
+@keyframes scaler {
+	0%	{
+		transform: scale(1);
+		opacity: 1;
+		}
+		
+	7%	{
+		transform: scale(.3);
+		opacity: .3;
+		}
+
+	26%	{
+		transform: scale(.3);
+		opacity: .3;
+		}
+
+	33%	{
+		transform: scale(1);
+		opacity: 1;
+		}
 }
 
 
