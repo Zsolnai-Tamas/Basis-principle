@@ -7,10 +7,14 @@
 	box-sizing: border-box;  
 	overflow: hidden;
 }
+
+html {
+	width: 100%;
+}
   
 body {
 	height: 100vh;
-	width: 99vw;
+	width: 100%;
 	text-align: center;
 	font-family: 'lato',sans-serif;
 	font-weight: 500;
@@ -22,12 +26,13 @@ body {
 }
 
 header{
-	height: 20vh;
+	height: 25vh;
 	perspective: 200px;
 }
 
 main{
 	height: 60vh;
+	min-height: fit-content;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -41,22 +46,24 @@ main{
 }
 
 #basic {	
-	background: -webkit-linear-gradient(white, #497bad);
-    -webkit-background-clip: text;
+	background: linear-gradient(white, #497bad);
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 	padding: 4px;
 	font-size: max(8vw, 70px);
-	animation: basicIn calc(var(--anitime)*5);	
+	animation: basicIn calc(var(--anitime)*5);
+	min-height: fit-content;	
 }
 
 #first, #second, #third {
 	text-align: center;
 	background: -webkit-linear-gradient(white 40%, #497bad);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 	font-size: max(5vw, 50px);
 	letter-spacing: .1em;
 	margin: 3vh;
+	min-height: fit-content;
 }
 
 #first{
@@ -86,6 +93,7 @@ main{
 
 footer {
 	height: 10vh;
+	min-height: fit-content;
 	display: grid;
 	position: relative;
 	mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -95,8 +103,6 @@ footer {
 	animation: ticker 15s linear infinite;
 	animation-delay: calc(var(--anitime)*6);
 	font-size: max(2vw, 40px);
-	/* border-top: yellow 4px solid; */
-	/* border-bottom: yellow 4px solid; */
 	color: #FFF;
 	text-align: left;
 	white-space: nowrap;
